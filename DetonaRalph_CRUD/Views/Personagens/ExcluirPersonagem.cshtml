@@ -1,0 +1,32 @@
+﻿@model DetonaRalph_CRUD.Models.Personagem
+
+@{
+    ViewData["Title"] = "ExcluirPersonagem";
+}
+
+<h1>Excluir Personagem</h1>
+
+<h3>Você tem certeza que quer excluir esse personagem?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NomePersonagem)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomePersonagem)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CenarioID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CenarioID)
+        </dd>
+    </dl>
+
+    <form asp-action="ExcluirPersonagem">
+        <input type="hidden" asp-for="PersonagemID" />
+        <input type="submit" value="Excluir" class="btn btn-danger" />
+        <a class="btn btn-info" asp-action="Index">Voltar a Listagem</a>
+    </form>
+</div>

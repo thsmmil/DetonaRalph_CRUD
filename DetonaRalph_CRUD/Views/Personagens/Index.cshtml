@@ -1,0 +1,73 @@
+﻿@model IEnumerable<DetonaRalph_CRUD.Models.Personagem>
+
+@{
+    ViewData["Title"] = "Listar Personagens";
+}
+<link href="/css/index.css" rel="stylesheet" />
+<h1>Listagem</h1>
+<div>
+    <p>
+        <a asp-action="CriarPersonagem">Criar Novo Personagem</a>
+    </p>
+</div>
+<div class="quadro_principal_lista">
+    <div class="card-group">
+        @foreach (var item in Model)
+        {
+
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="card">
+                    <img class="card-img-top imagem-card" src="@Html.DisplayFor(modelItem => item.CenarioID)" alt="Imagem do Cenário escolhido">
+                    <div class="card-body">
+                        <div class="conteudo">
+                            <h3 class="card-title text-center">
+                                @Html.DisplayFor(modelItem => item.NomePersonagem)
+                            </h3>
+                        </div>
+                        <footer class="card-footer text-center">
+                            <a asp-action="AtualizarPersonagem" asp-route-id="@item.PersonagemID">Editar</a> |
+                            <a asp-action="ExcluirPersonagem" asp-route-id="@item.PersonagemID" style="color: red">Deletar</a>
+                        </footer>
+
+                    </div>
+                </div>
+            </div>      }
+    </div>
+    
+</div>
+@*<h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomePersonagem)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CenarioID)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomePersonagem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CenarioID)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PersonagemID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PersonagemID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PersonagemID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

@@ -1,0 +1,39 @@
+﻿@model DetonaRalph_CRUD.Models.Personagem
+
+@{
+    ViewData["Title"] = "Criar Personagem";
+}
+
+<h1>Criar Personagem</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CriarPersonagem">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomePersonagem" class="control-label">Nome do Personagem</label>
+                <input asp-for="NomePersonagem" class="form-control" />
+                <span asp-validation-for="NomePersonagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CenarioID" class="control-label">Cenário</label>
+                <select asp-for="CenarioID" class="form-control">
+                    <option value="/img/predio_jogo.jpeg">Entrada do Prédio no Jogo do Ralph</option>
+                    <option value="/img/telhado_jogo.jpeg">Telhado do Prédio no Jogo do Ralph</option>
+                    <option value="/img/mundo_doce.jpeg">Lago no Mundo Doce</option>
+                    <option value="/img/mundo_doce2.jpeg">Árvore no Mundo Doce</option>
+                    <option value="/img/mundo_doce3.jpeg">Corrida no Mundo Doce</option>
+                </select>
+                <span asp-validation-for="CenarioID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Voltar a Listagem</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
