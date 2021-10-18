@@ -10,15 +10,26 @@
         <a asp-action="CriarPersonagem">Criar Novo Personagem</a>
     </p>
 </div>
+@*
+Listando todos os personagens que foram criados    
+*@
 <div class="quadro_principal_lista">
     <div class="card-group">
         @foreach (var item in Model)
         {
+            
+                var src = "";
+                @if (item.CenarioID==1) { src = "/img/predio_jogo.jpeg"; }
+                @if (item.CenarioID == 2) { src = "/img/telhado_jogo.jpeg"; }
+                @if (item.CenarioID == 3) { src = "/img/mundo_doce.jpeg"; }
+                @if (item.CenarioID == 4) { src = "/img/mundo_doce2.jpeg"; }
+                @if (item.CenarioID == 5) { src = "/img/mundo_doce3.jpeg"; }
 
+            
 
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="card">
-                    <img class="card-img-top imagem-card" src="@Html.DisplayFor(modelItem => item.CenarioID)" alt="Imagem do Cenário escolhido">
+                    <img class="card-img-top imagem-card" src="@src" alt="Imagem do Cenário escolhido">
                     <div class="card-body">
                         <div class="conteudo">
                             <h3 class="card-title text-center">

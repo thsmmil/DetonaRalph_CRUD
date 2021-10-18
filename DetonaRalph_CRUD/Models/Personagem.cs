@@ -9,6 +9,9 @@ namespace DetonaRalph_CRUD.Models
     {
         public int PersonagemID { get; set; }
         public string NomePersonagem { get; set; }
-        public string CenarioID{ get; set; }
+        public int CenarioID{ get; set; }
+        public Cenario Cenario{ get; set; }
+
+
     }
 }

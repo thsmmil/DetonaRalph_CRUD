@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DetonaRalph_CRUD.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210925222206_CriacaoBD")]
+    [Migration("20211018214458_CriacaoBD")]
     partial class CriacaoBD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,8 +17,26 @@ namespace DetonaRalph_CRUD.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("DetonaRalph_CRUD.Models.Cenario", b =>
+                {
+                    b.Property<int>("CenarioID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NomeCenario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("pathImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CenarioID");
+
+                    b.ToTable("Cenarios");
+                });
 
             modelBuilder.Entity("DetonaRalph_CRUD.Models.Personagem", b =>
                 {
@@ -27,15 +45,28 @@ namespace DetonaRalph_CRUD.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CenarioID")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CenarioID")
+                        .HasColumnType("int");
 
                     b.Property<string>("NomePersonagem")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PersonagemID");
 
+                    b.HasIndex("CenarioID");
+
                     b.ToTable("Personagens");
+                });
+
+            modelBuilder.Entity("DetonaRalph_CRUD.Models.Personagem", b =>
+                {
+                    b.HasOne("DetonaRalph_CRUD.Models.Cenario", "Cenario")
+                        .WithMany()
+                        .HasForeignKey("CenarioID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cenario");
                 });
 #pragma warning restore 612, 618
         }
